@@ -29,12 +29,6 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   Naviagate() {
-    // Navigator.pushReplacement(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (_) => const OnBoardingPage(),
-    //   ),
-    // );
     Get.offAll(() => const OnBoardingPage());
   }
 

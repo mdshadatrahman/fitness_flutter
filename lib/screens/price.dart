@@ -26,7 +26,7 @@ class _paymentState extends State<payment> {
             color: Colors.black,
           ),
           onPressed: () {
-            Navigator.pop(context);
+            Get.back();
           },
         ),
         title: const Text(
@@ -305,7 +305,7 @@ class _paymentState extends State<payment> {
                   child: Center(
                       child: Text(
                     "pay 0 ".toUpperCase(),
-                    style:const TextStyle(
+                    style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 22),

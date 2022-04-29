@@ -33,7 +33,7 @@ class _details_searchState extends State<details_search>
           backgroundColor: AppColors.background,
           leading: IconButton(
             onPressed: () {
-              Navigator.pop(context);
+              Get.back();
             },
             icon: const Icon(
               Icons.arrow_back,

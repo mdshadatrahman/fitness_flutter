@@ -59,14 +59,14 @@ class _sesion_requestState extends State<sesion_request> {
           backgroundColor: AppColors.background,
           leading: IconButton(
             onPressed: () {
-              Navigator.pop(context);
+              Get.back();
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               color: Colors.white,
             ),
           ),
-          title: Text(
+          title: const Text(
             'Select Date & Time',
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
           ),

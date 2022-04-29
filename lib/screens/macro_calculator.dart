@@ -1,6 +1,7 @@
 import 'package:fitness_app/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:get/get.dart';
 
 import '../utils/colors.dart';
 
@@ -43,7 +44,7 @@ class _macro_calculatorState extends State<macro_calculator> {
         backgroundColor: AppColors.background,
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context);
+            Get.back();
           },
           icon: const Icon(
             Icons.arrow_back,

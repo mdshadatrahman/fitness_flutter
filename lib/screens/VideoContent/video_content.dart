@@ -1,6 +1,7 @@
 import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:fitness_app/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'content_tabs/contents.dart';
 
@@ -31,7 +32,7 @@ class _video_contentState extends State<video_content>
         backgroundColor: AppColors.background,
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context);
+            Get.back();
           },
           icon: const Icon(
             Icons.arrow_back,

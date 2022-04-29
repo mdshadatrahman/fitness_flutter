@@ -27,25 +27,16 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
     return WillPopScope(
       onWillPop: () async {
         current_tab == 1
-            ? Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => const CustomBottomNavigationBar(),
-                ),
+            ? Get.to(
+                () => const CustomBottomNavigationBar(),
               )
             : current_tab == 2
-                ? Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => const CustomBottomNavigationBar(),
-                    ),
+                ? Get.to(
+                    () => const CustomBottomNavigationBar(),
                   )
                 : current_tab == 3
-                    ? Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => const CustomBottomNavigationBar(),
-                        ),
+                    ? Get.to(
+                        (_) => const CustomBottomNavigationBar(),
                       )
                     : showDialog(
                         context: context,
@@ -65,7 +56,6 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                               TextButton(
                                 child: const Text("NO"),
                                 onPressed: () {
-                                  // Navigator.of(context).pop();
                                   Get.back();
                                 },
                               )

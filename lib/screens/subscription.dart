@@ -21,7 +21,7 @@ class subscription extends StatelessWidget {
             color: AppColors.t2,
           ),
           onPressed: () {
-            Navigator.pop(context);
+            Get.back();
           },
         ),
       ),

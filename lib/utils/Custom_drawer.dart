@@ -90,12 +90,6 @@ class CustomDrawer extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (_) => home(),
-              //   ),
-              // );
               Get.to(() => video_content(),
                   duration: const Duration(
                       milliseconds:

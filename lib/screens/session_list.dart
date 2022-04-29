@@ -2,6 +2,7 @@ import 'package:fitness_app/screens/sesion_list+tab2.dart';
 import 'package:fitness_app/screens/sestion_tab.dart';
 import 'package:fitness_app/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class sesion_list extends StatefulWidget {
   @override
@@ -29,7 +30,7 @@ class _sesion_listState extends State<sesion_list>
         backgroundColor: AppColors.background,
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context);
+            Get.back();
           },
           icon: const Icon(
             Icons.arrow_back,

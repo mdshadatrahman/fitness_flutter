@@ -721,6 +721,119 @@ class _TrainingToolsState extends State<TrainingTools> {
                 ],
               ),
               SizedBox(height: height * 0.03),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    height: 173,
+                    width: 173,
+                    decoration: BoxDecoration(
+                      color: const Color(0xff262627),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SvgPicture.asset('assets/icons/abs.svg'),
+                          SizedBox(height: height * 0.02),
+                          const Text(
+                            'ABS',
+                            style: TextStyle(
+                              fontSize: 23,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 173,
+                    width: 173,
+                    decoration: BoxDecoration(
+                      color: const Color(0xff262627),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SvgPicture.asset('assets/icons/arm.svg'),
+                          SizedBox(height: height * 0.02),
+                          const Text(
+                            'SHOULDER',
+                            style: TextStyle(
+                              fontSize: 23,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              SizedBox(height: height * 0.03),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    height: 173,
+                    width: 173,
+                    decoration: BoxDecoration(
+                      color: const Color(0xff262627),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SvgPicture.asset('assets/icons/sixpacs.svg'),
+                          SizedBox(height: height * 0.02),
+                          const Text(
+                            'SIX PACS',
+                            style: TextStyle(
+                              fontSize: 23,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 173,
+                    width: 173,
+                    decoration: BoxDecoration(
+                      color: const Color(0xff262627),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SvgPicture.asset('assets/icons/chest.svg'),
+                          SizedBox(height: height * 0.02),
+                          const Text(
+                            'CHEST',
+                            style: TextStyle(
+                              fontSize: 23,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: height * 0.03),
             ],
           ),
         ),
