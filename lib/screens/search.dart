@@ -2,7 +2,7 @@ import 'package:fitness_app/screens/seach_section/search_details.dart';
 import 'package:fitness_app/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/route_manager.dart';
+import 'package:page_transition/page_transition.dart';
 import 'chat_screen.dart';
 
 class search extends StatefulWidget {
@@ -11,6 +11,7 @@ class search extends StatefulWidget {
 }
 
 class _searchState extends State<search> {
+  final GlobalKey _menuKey = GlobalKey();
   List search_result = [
     {'name': "Hilary Ouse", 'follow': 1},
     {'name': "Hilary Ouse", 'follow': 0},
@@ -18,6 +19,7 @@ class _searchState extends State<search> {
     {'name': "Hilary Ouse", 'follow': 0},
     {'name': "Hilary Ouse", 'follow': 1},
   ];
+  var selectedItem = '';
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -28,7 +30,8 @@ class _searchState extends State<search> {
           backgroundColor: AppColors.background,
           leading: IconButton(
             onPressed: () {
-              Get.back();
+              // Get.back();
+              Navigator.pop(context);
             },
             icon: const Icon(
               Icons.arrow_back,
@@ -39,6 +42,7 @@ class _searchState extends State<search> {
             'Choose trainer',
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
           ),
+          centerTitle: true,
           actions: const [
             Padding(
               padding: EdgeInsets.all(8.0),
@@ -62,11 +66,59 @@ class _searchState extends State<search> {
                     color: AppColors.grey,
                   ),
                   child: TextFormField(
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       border: InputBorder.none,
-                      prefixIcon: Icon(Icons.search, color: Colors.white),
+                      prefixIcon: const Icon(Icons.search, color: Colors.white),
+                      suffixIcon: GestureDetector(
+                        onTap: () {
+                          showMenu(
+                            //TODO
+                            context: context,
+                            position: RelativeRect.fromLTRB(width, 0, 0, 0),
+                            color: Colors.black,
+                            items: [
+                              PopupMenuItem<String>(
+                                child: GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      selectedItem = 'Trainer';
+                                    });
+                                    print(selectedItem);
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text(
+                                    'Trainer',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ),
+                                value: 'Trainer',
+                              ),
+                              PopupMenuItem<String>(
+                                child: GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      selectedItem = 'Trainee';
+                                    });
+                                    print(selectedItem);
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text(
+                                    'Trainee',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ),
+                                value: 'Trainee',
+                              ),
+                            ],
+                          );
+                        },
+                        child: const Icon(
+                          Icons.tune,
+                          color: AppColors.magenta,
+                        ),
+                      ),
                       hintText: "Search",
-                      hintStyle: TextStyle(color: Colors.white),
+                      hintStyle: const TextStyle(color: Colors.white),
                     ),
                     style: const TextStyle(color: Colors.white),
                   ),
@@ -80,12 +132,19 @@ class _searchState extends State<search> {
                       padding: const EdgeInsets.all(8.0),
                       child: InkWell(
                         onTap: () {
-                          Get.to(
-                            () => details_search(),
-                            duration: const Duration(
-                                milliseconds:
-                                    500), //duration of transitions, default 1 sec
-                            transition: Transition.rightToLeft,
+                          // Get.to(
+                          //   () => details_search(),
+                          //   duration: const Duration(
+                          //       milliseconds:
+                          //           500), //duration of transitions, default 1 sec
+                          //   transition: Transition.rightToLeft,
+                          // );
+                          Navigator.push(
+                            context,
+                            PageTransition(
+                              type: PageTransitionType.rightToLeftWithFade,
+                              child: details_search(),
+                            ),
                           );
                         },
                         child: Container(
@@ -139,8 +198,19 @@ class _searchState extends State<search> {
                                       padding: const EdgeInsets.all(8.0),
                                       child: InkWell(
                                           onTap: () {
-                                            Get.to(() => const ChatScreen(
-                                                chatName: 'Silva Roy'));
+                                            // Get.to(
+                                            //   () => const ChatScreen(
+                                            //       chatName: 'Silva Roy'),
+                                            // );
+                                            Navigator.push(
+                                              context,
+                                              PageTransition(
+                                                type: PageTransitionType
+                                                    .rightToLeftWithFade,
+                                                child: const ChatScreen(
+                                                    chatName: 'Silva Roy'),
+                                              ),
+                                            );
                                           },
                                           child: SvgPicture.asset(
                                               'assets/icons/chats.svg')),
@@ -154,8 +224,15 @@ class _searchState extends State<search> {
                                                   search_result[index]
                                                       ['follow'] = 1;
                                                 })
-                                              : Get.to(() => const ChatScreen(
-                                                  chatName: 'Silva Roy'));
+                                              : Navigator.push(
+                                                  context,
+                                                  PageTransition(
+                                                    type: PageTransitionType
+                                                        .rightToLeftWithFade,
+                                                    child: const ChatScreen(
+                                                        chatName: 'Silva Roy'),
+                                                  ),
+                                                );
                                         },
                                         child: Container(
                                           height: 30,
@@ -176,7 +253,7 @@ class _searchState extends State<search> {
                       ),
                     );
                   }),
-              Text(search_result.toString()),
+              // Text(search_result.toString()),
             ],
           ),
         ),
@@ -184,3 +261,26 @@ class _searchState extends State<search> {
     );
   }
 }
+
+
+// PopupMenuButton<String>(
+//                             key: _menuKey,
+//                             onSelected: (String result) {
+//                               setState(() {
+//                                 selectedItem = result;
+//                               });
+//                               print(selectedItem);
+//                             },
+//                             itemBuilder: (BuildContext context) =>
+//                                 <PopupMenuEntry<String>>[
+//                               const PopupMenuItem<String>(
+//                                 value: 'Trainer',
+//                                 child: Text('Trainer'),
+//                               ),
+//                               const PopupMenuItem<String>(
+//                                 value: 'Trainee',
+//                                 child: Text('Trainee'),
+//                               ),
+//                             ],
+//                           );
+                        

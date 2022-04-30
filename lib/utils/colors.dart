@@ -20,8 +20,8 @@ class AppColors {
   static const t2 = Color(0xffD20DCD);
   static const splashBg = Color(0xff1E1E1E);
   static const grey2 = Color(0xff7E7E7E);
-  static const grey3= Color(0xff4D4D4D);
-  static const c1= Color(0xffFFA570);
-  static const c2= Color(0xff31BA99);
-  static const c3= Color(0xffD349D0);
+  static const grey3 = Color(0xff4D4D4D);
+  static const c1 = Color(0xffFFA570);
+  static const c2 = Color(0xff31BA99);
+  static const c3 = Color(0xffD349D0);
 }

@@ -4,6 +4,7 @@ import 'package:fitness_app/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/route_manager.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../chat_screen.dart';
 
@@ -33,7 +34,8 @@ class _details_searchState extends State<details_search>
           backgroundColor: AppColors.background,
           leading: IconButton(
             onPressed: () {
-              Get.back();
+              // Get.back();
+              Navigator.pop(context);
             },
             icon: const Icon(
               Icons.arrow_back,
@@ -104,7 +106,14 @@ class _details_searchState extends State<details_search>
                   ),
                   InkWell(
                       onTap: () {
-                        Get.to(() => const ChatScreen(chatName: 'Silva Roy'));
+                        // Get.to(() => const ChatScreen(chatName: 'Silva Roy'));
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.rightToLeftWithFade,
+                            child: const ChatScreen(chatName: 'Silva Roy'),
+                          ),
+                        );
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(right: 28.0),
@@ -205,12 +214,19 @@ class _details_searchState extends State<details_search>
                 children: [
                   InkWell(
                     onTap: () {
-                      Get.to(
-                        () => sesion_request(),
-                        duration: const Duration(
-                          milliseconds: 500,
+                      // Get.to(
+                      //   () => sesion_request(),
+                      //   duration: const Duration(
+                      //     milliseconds: 500,
+                      //   ),
+                      //   transition: Transition.rightToLeft,
+                      // );
+                      Navigator.push(
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.rightToLeftWithFade,
+                          child: sesion_request(),
                         ),
-                        transition: Transition.rightToLeft,
                       );
                     },
                     child: Container(

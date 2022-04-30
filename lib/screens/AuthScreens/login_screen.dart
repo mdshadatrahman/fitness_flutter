@@ -3,6 +3,7 @@ import 'package:fitness_app/screens/forgot_pass/forgot_password_screen.dart';
 import 'package:fitness_app/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../../utils/custom_bottom_navigation.dart';
 
@@ -112,9 +113,16 @@ class _LoginScreenState extends State<LoginScreen> {
                       SizedBox(height: height * 0.02),
                       GestureDetector(
                         onTap: () {
-                          Get.offAll(
-                            () => const CustomBottomNavigationBar(),
-                            transition: Transition.rightToLeft,
+                          // Get.offAll(
+                          //   () => const CustomBottomNavigationBar(),
+                          //   transition: Transition.rightToLeft,
+                          // );
+                          Navigator.pushReplacement(
+                            context,
+                            PageTransition(
+                              type: PageTransitionType.rightToLeftWithFade,
+                              child: const CustomBottomNavigationBar(),
+                            ),
                           );
                         },
                         child: Container(
@@ -141,10 +149,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       SizedBox(height: height * 0.02),
                       GestureDetector(
                         onTap: () {
-                          Get.to(
-                            () => const SignUpScreen(),
-                            transition: Transition.rightToLeft,
-                            duration: const Duration(milliseconds: 250),
+                          // Get.to(
+                          //   () => const SignUpScreen(),
+                          //   transition: Transition.rightToLeft,
+                          //   duration: const Duration(milliseconds: 250),
+                          // );
+                          Navigator.push(
+                            context,
+                            PageTransition(
+                              type: PageTransitionType.rightToLeftWithFade,
+                              child: const SignUpScreen(),
+                            ),
                           );
                         },
                         child: Container(
@@ -167,47 +182,72 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
 
-                      SizedBox(height: height * 0.02),
-                      // const Text(
-                      //   'Signup with social media',
-                      //   style: TextStyle(fontSize: 10, color: Colors.white),
-                      // ),
-                      //
-                      // //!Google
-                      // SizedBox(height: height * 0.02),
-                      // Image.asset('assets/images/google.png'),
+                      SizedBox(height: height * 0.03),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            height: 1,
+                            width: width * 0.1,
+                            color: AppColors.magenta,
+                          ),
+                          SizedBox(width: width * 0.02),
+                          const Text(
+                            'Signup with social media',
+                            style: TextStyle(fontSize: 10, color: Colors.white),
+                          ),
+                          SizedBox(width: width * 0.02),
+                          Container(
+                            height: 1,
+                            width: width * 0.1,
+                            color: AppColors.magenta,
+                          ),
+                        ],
+                      ),
+
+                      //!Google
                       SizedBox(height: height * 0.02),
 
-                      GestureDetector(
-                        onTap: () {
-                          Get.to(() => const ForgotPassword());
-                        },
-                        child: const Text(
-                          'Forgot password',
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
+                      Image.asset('assets/images/google.png'),
+                      SizedBox(height: height * 0.02),
+
+                      // GestureDetector(
+                      //   onTap: () {
+                      //     Get.to(() => const ForgotPassword());
+                      //   },
+                      //   child: const Text(
+                      //     'Forgot password',
+                      //     style: TextStyle(
+                      //       color: Colors.white,
+                      //     ),
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),
               ),
-              // Positioned(
-              //   top: height * 0.9,
-              //   left: width * 0.37,
-              //   child: GestureDetector(
-              //     onTap: () {
-              //       Get.to(() => ForgotPassword());
-              //     },
-              //     child: const Text(
-              //       'Forgot password',
-              //       style: TextStyle(
-              //         color: Colors.white,
-              //       ),
-              //     ),
-              //   ),
-              // )
+              Positioned(
+                top: height * 0.88,
+                left: width * 0.37,
+                child: GestureDetector(
+                  onTap: () {
+                    // Get.to(() => const ForgotPassword());
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        type: PageTransitionType.rightToLeftWithFade,
+                        child: const ForgotPassword(),
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    'Forgot password',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
         ),

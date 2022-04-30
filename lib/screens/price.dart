@@ -2,6 +2,7 @@ import 'package:fitness_app/screens/home_screen.dart';
 import 'package:fitness_app/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
+import 'package:page_transition/page_transition.dart';
 
 class payment extends StatefulWidget {
   @override
@@ -26,7 +27,8 @@ class _paymentState extends State<payment> {
             color: Colors.black,
           ),
           onPressed: () {
-            Get.back();
+            // Get.back();
+            Navigator.pop(context);
           },
         ),
         title: const Text(
@@ -289,11 +291,18 @@ class _paymentState extends State<payment> {
               padding: const EdgeInsets.all(8.0),
               child: InkWell(
                 onTap: () {
-                  Get.to(() => const HomeScreen(),
-                      duration: const Duration(
-                          milliseconds:
-                              500), //duration of transitions, default 1 sec
-                      transition: Transition.zoom);
+                  // Get.to(() => const HomeScreen(),
+                  //     duration: const Duration(
+                  //         milliseconds:
+                  //             500), //duration of transitions, default 1 sec
+                  //     transition: Transition.zoom);
+                  Navigator.push(
+                    context,
+                    PageTransition(
+                      type: PageTransitionType.rightToLeftWithFade,
+                      child: const HomeScreen(),
+                    ),
+                  );
                 },
                 child: Container(
                   height: height / 20,

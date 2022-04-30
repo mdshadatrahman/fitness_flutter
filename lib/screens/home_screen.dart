@@ -1,3 +1,4 @@
+import 'package:fitness_app/screens/message_screen.dart';
 import 'package:fitness_app/screens/posts.dart';
 import 'package:fitness_app/screens/search.dart';
 import 'package:fitness_app/screens/write_post.dart';
@@ -5,7 +6,8 @@ import 'package:fitness_app/utils/Custom_drawer.dart';
 import 'package:fitness_app/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
+import 'package:page_transition/page_transition.dart';
 
 import 'chat_screen.dart';
 import 'comments.dart';
@@ -52,7 +54,14 @@ class _HomeScreenState extends State<HomeScreen>
           actions: [
             GestureDetector(
               onTap: () {
-                Get.to(() => const ChatScreen(chatName: ''));
+                // Get.to(() => const ChatScreen(chatName: ''));
+                Navigator.push(
+                  context,
+                  PageTransition(
+                    type: PageTransitionType.rightToLeftWithFade,
+                    child: const MessageScreen(),
+                  ),
+                );
               },
               child: SvgPicture.asset('assets/icons/chats.svg'),
             ),
@@ -82,12 +91,19 @@ class _HomeScreenState extends State<HomeScreen>
                     padding: const EdgeInsets.all(8.0),
                     child: InkWell(
                       onTap: () {
-                        Get.to(
-                          () => search(),
-                          duration: const Duration(
-                            milliseconds: 500,
-                          ), //duration of transitions, default 1 sec
-                          transition: Transition.zoom,
+                        // Get.to(
+                        //   () => search(),
+                        //   duration: const Duration(
+                        //     milliseconds: 500,
+                        //   ), //duration of transitions, default 1 sec
+                        //   transition: Transition.zoom,
+                        // );
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.rightToLeftWithFade,
+                            child: search(),
+                          ),
                         );
                       },
                       child: Container(
@@ -131,7 +147,14 @@ class _HomeScreenState extends State<HomeScreen>
                     children: [
                       InkWell(
                         onTap: () {
-                          Get.to(() => const ChatScreen(chatName: 'Silva Roy'));
+                          // Get.to(() => const ChatScreen(chatName: 'Silva Roy'));
+                          Navigator.push(
+                            context,
+                            PageTransition(
+                              type: PageTransitionType.rightToLeftWithFade,
+                              child: const ChatScreen(chatName: 'Silva Roy'),
+                            ),
+                          );
                         },
                         child: const CircleAvatar(
                           radius: 27,
@@ -141,7 +164,14 @@ class _HomeScreenState extends State<HomeScreen>
                       SizedBox(width: width * 0.02),
                       InkWell(
                         onTap: () {
-                          Get.to(() => const ChatScreen(chatName: 'Silva Roy'));
+                          // Get.to(() => const ChatScreen(chatName: 'Silva Roy'));
+                          Navigator.push(
+                            context,
+                            PageTransition(
+                              type: PageTransitionType.rightToLeftWithFade,
+                              child: const ChatScreen(chatName: 'Silva Roy'),
+                            ),
+                          );
                         },
                         child: const CircleAvatar(
                           radius: 27,
@@ -151,7 +181,14 @@ class _HomeScreenState extends State<HomeScreen>
                       SizedBox(width: width * 0.02),
                       InkWell(
                         onTap: () {
-                          Get.to(() => const ChatScreen(chatName: 'Silva Roy'));
+                          // Get.to(() => const ChatScreen(chatName: 'Silva Roy'));
+                          Navigator.push(
+                            context,
+                            PageTransition(
+                              type: PageTransitionType.rightToLeftWithFade,
+                              child: const ChatScreen(chatName: 'Silva Roy'),
+                            ),
+                          );
                         },
                         child: const CircleAvatar(
                           radius: 27,
@@ -161,7 +198,14 @@ class _HomeScreenState extends State<HomeScreen>
                       SizedBox(width: width * 0.02),
                       InkWell(
                         onTap: () {
-                          Get.to(() => const ChatScreen(chatName: 'Silva Roy'));
+                          // Get.to(() => const ChatScreen(chatName: 'Silva Roy'));
+                          Navigator.push(
+                            context,
+                            PageTransition(
+                              type: PageTransitionType.rightToLeftWithFade,
+                              child: const ChatScreen(chatName: 'Silva Roy'),
+                            ),
+                          );
                         },
                         child: const CircleAvatar(
                           radius: 27,
@@ -171,7 +215,14 @@ class _HomeScreenState extends State<HomeScreen>
                       SizedBox(width: width * 0.02),
                       InkWell(
                         onTap: () {
-                          Get.to(() => const ChatScreen(chatName: 'Silva Roy'));
+                          // Get.to(() => const ChatScreen(chatName: 'Silva Roy'));
+                          Navigator.push(
+                            context,
+                            PageTransition(
+                              type: PageTransitionType.rightToLeftWithFade,
+                              child: const ChatScreen(chatName: 'Silva Roy'),
+                            ),
+                          );
                         },
                         child: const CircleAvatar(
                           radius: 27,
@@ -181,7 +232,14 @@ class _HomeScreenState extends State<HomeScreen>
                       SizedBox(width: width * 0.02),
                       InkWell(
                         onTap: () {
-                          Get.to(() => const ChatScreen(chatName: 'Silva Roy'));
+                          // Get.to(() => const ChatScreen(chatName: 'Silva Roy'));
+                          Navigator.push(
+                            context,
+                            PageTransition(
+                              type: PageTransitionType.rightToLeftWithFade,
+                              child: const ChatScreen(chatName: 'Silva Roy'),
+                            ),
+                          );
                         },
                         child: const CircleAvatar(
                           radius: 27,
@@ -244,9 +302,17 @@ class _HomeScreenState extends State<HomeScreen>
                               children: [
                                 InkWell(
                                   onTap: () {
-                                    Get.to(
-                                      () => write_psot(),
-                                      transition: Transition.rightToLeft,
+                                    // Get.to(
+                                    //   () => write_psot(),
+                                    //   transition: Transition.rightToLeft,
+                                    // );
+                                    Navigator.push(
+                                      context,
+                                      PageTransition(
+                                        type: PageTransitionType
+                                            .rightToLeftWithFade,
+                                        child: write_psot(),
+                                      ),
                                     );
                                   },
                                   child: Row(
@@ -267,9 +333,17 @@ class _HomeScreenState extends State<HomeScreen>
                                 ),
                                 InkWell(
                                   onTap: () {
-                                    Get.to(
-                                      () => write_psot(),
-                                      transition: Transition.rightToLeft,
+                                    // Get.to(
+                                    //   () => write_psot(),
+                                    //   transition: Transition.rightToLeft,
+                                    // );
+                                    Navigator.push(
+                                      context,
+                                      PageTransition(
+                                        type: PageTransitionType
+                                            .rightToLeftWithFade,
+                                        child: write_psot(),
+                                      ),
                                     );
                                   },
                                   child: Row(
@@ -578,9 +652,16 @@ class _HomeScreenState extends State<HomeScreen>
                     //!image
                     GestureDetector(
                       onTap: () {
-                        Get.to(
-                          () => const PostScreen(),
-                          transition: Transition.rightToLeft,
+                        // Get.to(
+                        //   () => const PostScreen(),
+                        //   transition: Transition.rightToLeft,
+                        // );
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.rightToLeftWithFade,
+                            child: const PostScreen(),
+                          ),
                         );
                       },
                       child: Container(
@@ -628,9 +709,16 @@ class _HomeScreenState extends State<HomeScreen>
                         //!Comment
                         GestureDetector(
                           onTap: () {
-                            Get.to(
-                              () => const CommentsScreen(),
-                              transition: Transition.rightToLeft,
+                            // Get.to(
+                            //   () => const CommentsScreen(),
+                            //   transition: Transition.rightToLeft,
+                            // );
+                            Navigator.push(
+                              context,
+                              PageTransition(
+                                type: PageTransitionType.rightToLeftWithFade,
+                                child: const CommentsScreen(),
+                              ),
                             );
                           },
                           child: const Icon(

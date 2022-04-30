@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:fitness_app/utils/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 class write_psot extends StatefulWidget {
@@ -46,7 +46,8 @@ class _write_psotState extends State<write_psot> {
         backgroundColor: AppColors.background,
         leading: IconButton(
           onPressed: () {
-            Get.back();
+            // Get.back();
+            Navigator.pop(context);
           },
           icon: const Icon(
             Icons.arrow_back,
@@ -72,7 +73,8 @@ class _write_psotState extends State<write_psot> {
         padding: const EdgeInsets.all(8.0),
         child: InkWell(
           onTap: () {
-            Get.back();
+            // Get.back();
+            Navigator.pop(context);
           },
           child: Container(
             height: height / 18,
@@ -191,7 +193,8 @@ class _write_psotState extends State<write_psot> {
                 label: const Text("Camera"),
                 onPressed: () {
                   takephoto_camera();
-                  Get.back();
+                  // Get.back();
+                  Navigator.pop(context);
                 },
               ),
               // ignore: deprecated_member_use
@@ -200,7 +203,8 @@ class _write_psotState extends State<write_psot> {
                 label: const Text("Gallery"),
                 onPressed: () {
                   takephoto_gallary();
-                  Get.back();
+                  // Get.back();
+                  Navigator.pop(context);
                 },
               ),
             ],

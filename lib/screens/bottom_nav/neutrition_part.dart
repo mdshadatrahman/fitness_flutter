@@ -1,6 +1,6 @@
 import 'package:fitness_app/utils/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 
 class neutrition_part extends StatefulWidget {
   @override

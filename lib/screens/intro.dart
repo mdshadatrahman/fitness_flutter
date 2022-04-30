@@ -1,7 +1,8 @@
 import 'package:fitness_app/utils/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:page_transition/page_transition.dart';
 
 import 'AuthScreens/login_screen.dart';
 
@@ -16,7 +17,14 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   final introKey = GlobalKey<IntroductionScreenState>();
 
   void _onIntroEnd(context) {
-    Get.offAll(() => const LoginScreen());
+    // Get.offAll(() => const LoginScreen());
+    Navigator.pushReplacement(
+      context,
+      PageTransition(
+        type: PageTransitionType.rightToLeftWithFade,
+        child: const LoginScreen(),
+      ),
+    );
   }
 
   @override

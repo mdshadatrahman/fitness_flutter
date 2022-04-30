@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:page_transition/page_transition.dart';
+// import 'package:get/get.dart';
 import 'intro.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -29,7 +30,14 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   Naviagate() {
-    Get.offAll(() => const OnBoardingPage());
+    // Get.offAll(() => const OnBoardingPage());
+    Navigator.pushReplacement(
+      context,
+      PageTransition(
+        type: PageTransitionType.rightToLeftWithFade,
+        child: const OnBoardingPage(),
+      ),
+    );
   }
 
   route() async {

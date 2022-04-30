@@ -21,7 +21,8 @@ class _live_trainingState extends State<live_training> {
         backgroundColor: AppColors.background,
         leading: IconButton(
           onPressed: () {
-            Get.back();
+            // Get.back();
+            Navigator.pop(context);
           },
           icon: const Icon(
             Icons.arrow_back,

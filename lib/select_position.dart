@@ -1,7 +1,7 @@
 import 'package:fitness_app/screens/personal_information_screen.dart';
 import 'package:fitness_app/utils/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:page_transition/page_transition.dart';
 
 class SelectPositionScreen extends StatefulWidget {
   const SelectPositionScreen({Key? key}) : super(key: key);
@@ -78,10 +78,17 @@ class _SelectPositionScreenState extends State<SelectPositionScreen> {
                       SizedBox(height: height * 0.15),
                       GestureDetector(
                         onTap: () {
-                          Get.to(
-                            () => const PersonalInformationScreen(),
-                            transition: Transition.rightToLeft,
-                            duration: const Duration(milliseconds: 250),
+                          // Get.to(
+                          //   () => const PersonalInformationScreen(),
+                          //   transition: Transition.rightToLeft,
+                          //   duration: const Duration(milliseconds: 250),
+                          // );
+                          Navigator.push(
+                            context,
+                            PageTransition(
+                              type: PageTransitionType.rightToLeftWithFade,
+                              child: const PersonalInformationScreen(),
+                            ),
                           );
                         },
                         child: Container(

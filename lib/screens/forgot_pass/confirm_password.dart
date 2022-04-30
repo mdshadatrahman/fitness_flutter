@@ -1,7 +1,8 @@
 import 'package:fitness_app/screens/forgot_pass/success.dart';
 import 'package:fitness_app/utils/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:page_transition/page_transition.dart';
+// import 'package:get/get.dart';
 
 class ConfirmPassword extends StatefulWidget {
   const ConfirmPassword({Key? key}) : super(key: key);
@@ -49,7 +50,7 @@ class _ConfirmPasswordState extends State<ConfirmPassword> {
                       Padding(
                         padding: EdgeInsets.only(left: width / 10),
                         child: Row(
-                          children:const [
+                          children: const [
                             Text(
                               'Confirm Password',
                               style: TextStyle(
@@ -134,10 +135,17 @@ class _ConfirmPasswordState extends State<ConfirmPassword> {
                       SizedBox(height: height * 0.15),
                       GestureDetector(
                         onTap: () {
-                          Get.to(
-                           ()=> const SuccessScreen(),
-                            transition: Transition.zoom,
-                            duration: const Duration(milliseconds: 250),
+                          // Get.to(
+                          //  ()=> const SuccessScreen(),
+                          //   transition: Transition.zoom,
+                          //   duration: const Duration(milliseconds: 250),
+                          // );
+                          Navigator.push(
+                            context,
+                            PageTransition(
+                              type: PageTransitionType.rightToLeftWithFade,
+                              child: const SuccessScreen(),
+                            ),
                           );
                         },
                         child: Container(

@@ -3,6 +3,7 @@ import 'package:fitness_app/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/route_manager.dart';
+import 'package:page_transition/page_transition.dart';
 
 class subscription extends StatelessWidget {
   @override
@@ -21,7 +22,8 @@ class subscription extends StatelessWidget {
             color: AppColors.t2,
           ),
           onPressed: () {
-            Get.back();
+            // Get.back();
+            Navigator.pop(context);
           },
         ),
       ),
@@ -65,11 +67,18 @@ class subscription extends StatelessWidget {
                 children: [
                   InkWell(
                     onTap: () {
-                      Get.to(() => payment(),
-                          duration: const Duration(
-                              milliseconds:
-                                  400), //duration of transitions, default 1 sec
-                          transition: Transition.zoom);
+                      // Get.to(() => payment(),
+                      //     duration: const Duration(
+                      //         milliseconds:
+                      //             400), //duration of transitions, default 1 sec
+                      //     transition: Transition.zoom);
+                      Navigator.push(
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.rightToLeftWithFade,
+                          child: payment(),
+                        ),
+                      );
                     },
                     child: Container(
                       height: height / 6,

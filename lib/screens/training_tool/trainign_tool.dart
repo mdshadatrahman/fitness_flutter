@@ -1,12 +1,14 @@
-import 'package:fitness_app/screens/chat_screen.dart';
-import 'package:fitness_app/screens/macro_calculator.dart';
-import 'package:fitness_app/utils/Custom_drawer.dart';
+import 'package:fitness_app/screens/message_screen.dart';
+import 'package:fitness_app/screens/training_tool/picks_screen.dart';
+import 'package:fitness_app/screens/training_tool/quarantine_workout.dart';
+import 'package:fitness_app/screens/training_tool/sleep.dart';
+import 'package:fitness_app/screens/training_tool/workout.dart';
 import 'package:fitness_app/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:fitness_app/utils/colors.dart';
-import 'package:get/get.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:page_transition/page_transition.dart';
+import 'body_focus_submenu.dart';
+import 'with_equipment.dart';
 
 class TrainingTools extends StatefulWidget {
   @override
@@ -34,7 +36,7 @@ class _TrainingToolsState extends State<TrainingTools> {
               onTap: () {
                 //Removed drawer because it is submenu
                 // _key.currentState!.openDrawer();
-                Get.back();
+                Navigator.pop(context);
               },
               child: const Icon(
                 Icons.arrow_back,
@@ -55,9 +57,12 @@ class _TrainingToolsState extends State<TrainingTools> {
           actions: [
             GestureDetector(
               onTap: () {
-                Get.to(
-                  () => const ChatScreen(chatName: ''),
-                  transition: Transition.rightToLeft,
+                Navigator.push(
+                  context,
+                  PageTransition(
+                    type: PageTransitionType.rightToLeftWithFade,
+                    child: const MessageScreen(),
+                  ),
                 );
               },
               child: SvgPicture.asset("assets/images/chat.svg"),
@@ -147,62 +152,84 @@ class _TrainingToolsState extends State<TrainingTools> {
                   padding: const EdgeInsets.only(left: 8),
                   child: Row(
                     children: [
-                      Row(
-                        children: [
-                          Image.asset('assets/images/barbell2.png'),
-                          SizedBox(width: width * 0.03),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                'Gain Muscles\nand ABS',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            PageTransition(
+                              type: PageTransitionType.rightToLeftWithFade,
+                              child: const PickScreen(),
+                            ),
+                          );
+                        },
+                        child: Row(
+                          children: [
+                            Image.asset('assets/images/barbell2.png'),
+                            SizedBox(width: width * 0.03),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Gain Muscles\nand ABS',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(height: height * 0.01),
-                              const Text(
-                                '13 min • Beginner',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white,
+                                SizedBox(height: height * 0.01),
+                                const Text(
+                                  '13 min • Beginner',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white,
+                                  ),
                                 ),
-                              ),
-                            ],
-                          )
-                        ],
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                       SizedBox(width: width * 0.1),
-                      Row(
-                        children: [
-                          Image.asset('assets/images/barbell2.png'),
-                          SizedBox(width: width * 0.03),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                'Gain Muscles\nand ABS',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            PageTransition(
+                              type: PageTransitionType.rightToLeftWithFade,
+                              child: const PickScreen(),
+                            ),
+                          );
+                        },
+                        child: Row(
+                          children: [
+                            Image.asset('assets/images/barbell2.png'),
+                            SizedBox(width: width * 0.03),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Gain Muscles\nand ABS',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(height: height * 0.01),
-                              const Text(
-                                '13 min • Beginner',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white,
+                                SizedBox(height: height * 0.01),
+                                const Text(
+                                  '13 min • Beginner',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white,
+                                  ),
                                 ),
-                              ),
-                            ],
-                          )
-                        ],
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                       SizedBox(width: width * 0.1),
                     ],
@@ -216,62 +243,84 @@ class _TrainingToolsState extends State<TrainingTools> {
                   padding: const EdgeInsets.only(left: 8),
                   child: Row(
                     children: [
-                      Row(
-                        children: [
-                          Image.asset('assets/images/barbell2.png'),
-                          SizedBox(width: width * 0.03),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                'Gain Muscles\nand ABS',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            PageTransition(
+                              type: PageTransitionType.rightToLeftWithFade,
+                              child: const PickScreen(),
+                            ),
+                          );
+                        },
+                        child: Row(
+                          children: [
+                            Image.asset('assets/images/barbell2.png'),
+                            SizedBox(width: width * 0.03),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Gain Muscles\nand ABS',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(height: height * 0.01),
-                              const Text(
-                                '13 min • Beginner',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white,
+                                SizedBox(height: height * 0.01),
+                                const Text(
+                                  '13 min • Beginner',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white,
+                                  ),
                                 ),
-                              ),
-                            ],
-                          )
-                        ],
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                       SizedBox(width: width * 0.1),
-                      Row(
-                        children: [
-                          Image.asset('assets/images/barbell2.png'),
-                          SizedBox(width: width * 0.03),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                'Gain Muscles\nand ABS',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            PageTransition(
+                              type: PageTransitionType.rightToLeftWithFade,
+                              child: const PickScreen(),
+                            ),
+                          );
+                        },
+                        child: Row(
+                          children: [
+                            Image.asset('assets/images/barbell2.png'),
+                            SizedBox(width: width * 0.03),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Gain Muscles\nand ABS',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(height: height * 0.01),
-                              const Text(
-                                '13 min • Beginner',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white,
+                                SizedBox(height: height * 0.01),
+                                const Text(
+                                  '13 min • Beginner',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white,
+                                  ),
                                 ),
-                              ),
-                            ],
-                          )
-                        ],
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                       SizedBox(width: width * 0.1),
                     ],
@@ -283,43 +332,54 @@ class _TrainingToolsState extends State<TrainingTools> {
               SizedBox(height: height * 0.03),
               Padding(
                 padding: const EdgeInsets.all(8),
-                child: Container(
-                  height: height * 0.16,
-                  width: width,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(19),
-                    image: const DecorationImage(
-                      image: AssetImage('assets/images/qworkout.png'),
-                      fit: BoxFit.cover,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        type: PageTransitionType.rightToLeftWithFade,
+                        child: const QuarantineWorkScreen(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    height: height * 0.16,
+                    width: width,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(19),
+                      image: const DecorationImage(
+                        image: AssetImage('assets/images/qworkout.png'),
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 20,
-                      horizontal: 10,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: const [
-                        Text(
-                          'Best quarantine workout',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 20,
+                        horizontal: 10,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: const [
+                          Text(
+                            'Best quarantine workout',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                        Text(
-                          '5 workouts',
-                          style: TextStyle(
-                            fontSize: 13,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.white,
+                          Text(
+                            '5 workouts',
+                            style: TextStyle(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -346,65 +406,87 @@ class _TrainingToolsState extends State<TrainingTools> {
               SizedBox(height: height * 0.025),
               Padding(
                 padding: const EdgeInsets.only(left: 8),
-                child: Row(
-                  children: [
-                    Image.asset('assets/images/rope.png'),
-                    SizedBox(width: width * 0.03),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Gain Muscles\nand ABS',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        type: PageTransitionType.rightToLeftWithFade,
+                        child: const WorkOutScreen(),
+                      ),
+                    );
+                  },
+                  child: Row(
+                    children: [
+                      Image.asset('assets/images/rope.png'),
+                      SizedBox(width: width * 0.03),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Gain Muscles\nand ABS',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                        SizedBox(height: height * 0.01),
-                        const Text(
-                          '13 min • Intermediete',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white,
+                          SizedBox(height: height * 0.01),
+                          const Text(
+                            '13 min • Intermediete',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                      ],
-                    )
-                  ],
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ),
               SizedBox(height: height * 0.025),
               Padding(
                 padding: const EdgeInsets.only(left: 8),
-                child: Row(
-                  children: [
-                    Image.asset('assets/images/pulldown.png'),
-                    SizedBox(width: width * 0.03),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Gain Muscles\nand ABS',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        type: PageTransitionType.rightToLeftWithFade,
+                        child: const WorkOutScreen(),
+                      ),
+                    );
+                  },
+                  child: Row(
+                    children: [
+                      Image.asset('assets/images/pulldown.png'),
+                      SizedBox(width: width * 0.03),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Gain Muscles\nand ABS',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                        SizedBox(height: height * 0.01),
-                        const Text(
-                          '13 min • Beginner',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white,
+                          SizedBox(height: height * 0.01),
+                          const Text(
+                            '13 min • Beginner',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                      ],
-                    )
-                  ],
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ),
               SizedBox(height: height * 0.025),
@@ -429,37 +511,48 @@ class _TrainingToolsState extends State<TrainingTools> {
               ),
               Padding(
                 padding: const EdgeInsets.all(8),
-                child: Container(
-                  height: height * 0.16,
-                  width: width,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(19),
-                    image: const DecorationImage(
-                      image: AssetImage('assets/images/pullup.png'),
-                      fit: BoxFit.cover,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        type: PageTransitionType.rightToLeftWithFade,
+                        child: const WithEquipmentScreen(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    height: height * 0.16,
+                    width: width,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(19),
+                      image: const DecorationImage(
+                        image: AssetImage('assets/images/pullup.png'),
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 20,
-                      horizontal: 10,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(right: width * 0.12),
-                          child: const CircleAvatar(
-                            backgroundColor: AppColors.material,
-                            radius: 15,
-                            child: Icon(
-                              Icons.keyboard_arrow_right,
-                              color: Colors.white,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 20,
+                        horizontal: 10,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(right: width * 0.12),
+                            child: const CircleAvatar(
+                              backgroundColor: AppColors.material,
+                              radius: 15,
+                              child: Icon(
+                                Icons.keyboard_arrow_right,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -492,97 +585,119 @@ class _TrainingToolsState extends State<TrainingTools> {
                     children: [
                       Row(
                         children: [
-                          Container(
-                            height: height * 0.16,
-                            width: width * 0.55,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(19),
-                              image: const DecorationImage(
-                                image: AssetImage('assets/images/arm.png'),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                //!Magenta portion
-                                Container(
-                                  height: height * 0.035,
-                                  width: width * 0.55,
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xffD20DCD)
-                                        .withOpacity(0.4),
-                                    borderRadius: const BorderRadius.only(
-                                      bottomLeft: Radius.circular(19),
-                                      bottomRight: Radius.circular(19),
-                                    ),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(left: 10),
-                                    child: Row(
-                                      children: [
-                                        SizedBox(width: width * 0.03),
-                                        const Text(
-                                          'arm & shoulder',
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                PageTransition(
+                                  type: PageTransitionType.rightToLeftWithFade,
+                                  child: const Sleep(),
                                 ),
-                              ],
+                              );
+                            },
+                            child: Container(
+                              height: height * 0.16,
+                              width: width * 0.55,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(19),
+                                image: const DecorationImage(
+                                  image: AssetImage('assets/images/arm.png'),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  //!Magenta portion
+                                  Container(
+                                    height: height * 0.035,
+                                    width: width * 0.55,
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xffD20DCD)
+                                          .withOpacity(0.4),
+                                      borderRadius: const BorderRadius.only(
+                                        bottomLeft: Radius.circular(19),
+                                        bottomRight: Radius.circular(19),
+                                      ),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 10),
+                                      child: Row(
+                                        children: [
+                                          SizedBox(width: width * 0.03),
+                                          const Text(
+                                            'arm & shoulder',
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w400,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                           SizedBox(width: width * 0.05),
-                          Container(
-                            height: height * 0.16,
-                            width: width * 0.55,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(19),
-                              image: const DecorationImage(
-                                image: AssetImage('assets/images/warmup.png'),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                //!Magenta portion
-                                Container(
-                                  height: height * 0.035,
-                                  width: width * 0.55,
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xffD20DCD)
-                                        .withOpacity(0.4),
-                                    borderRadius: const BorderRadius.only(
-                                      bottomLeft: Radius.circular(19),
-                                      bottomRight: Radius.circular(19),
-                                    ),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(left: 10),
-                                    child: Row(
-                                      children: [
-                                        SizedBox(width: width * 0.03),
-                                        const Text(
-                                          'morning warm up',
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                PageTransition(
+                                  type: PageTransitionType.rightToLeftWithFade,
+                                  child: const Sleep(),
                                 ),
-                              ],
+                              );
+                            },
+                            child: Container(
+                              height: height * 0.16,
+                              width: width * 0.55,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(19),
+                                image: const DecorationImage(
+                                  image: AssetImage('assets/images/warmup.png'),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  //!Magenta portion
+                                  Container(
+                                    height: height * 0.035,
+                                    width: width * 0.55,
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xffD20DCD)
+                                          .withOpacity(0.4),
+                                      borderRadius: const BorderRadius.only(
+                                        bottomLeft: Radius.circular(19),
+                                        bottomRight: Radius.circular(19),
+                                      ),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 10),
+                                      child: Row(
+                                        children: [
+                                          SizedBox(width: width * 0.03),
+                                          const Text(
+                                            'morning warm up',
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w400,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           )
                         ],
@@ -600,98 +715,120 @@ class _TrainingToolsState extends State<TrainingTools> {
                     children: [
                       Row(
                         children: [
-                          Container(
-                            height: height * 0.16,
-                            width: width * 0.55,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(19),
-                              image: const DecorationImage(
-                                image:
-                                    AssetImage('assets/images/stretching.png'),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                //!Magenta portion
-                                Container(
-                                  height: height * 0.035,
-                                  width: width * 0.55,
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xffD20DCD)
-                                        .withOpacity(0.4),
-                                    borderRadius: const BorderRadius.only(
-                                      bottomLeft: Radius.circular(19),
-                                      bottomRight: Radius.circular(19),
-                                    ),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(left: 10),
-                                    child: Row(
-                                      children: [
-                                        SizedBox(width: width * 0.03),
-                                        const Text(
-                                          'full body stretching',
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                PageTransition(
+                                  type: PageTransitionType.rightToLeftWithFade,
+                                  child: const Sleep(),
                                 ),
-                              ],
+                              );
+                            },
+                            child: Container(
+                              height: height * 0.16,
+                              width: width * 0.55,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(19),
+                                image: const DecorationImage(
+                                  image: AssetImage(
+                                      'assets/images/stretching.png'),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  //!Magenta portion
+                                  Container(
+                                    height: height * 0.035,
+                                    width: width * 0.55,
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xffD20DCD)
+                                          .withOpacity(0.4),
+                                      borderRadius: const BorderRadius.only(
+                                        bottomLeft: Radius.circular(19),
+                                        bottomRight: Radius.circular(19),
+                                      ),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 10),
+                                      child: Row(
+                                        children: [
+                                          SizedBox(width: width * 0.03),
+                                          const Text(
+                                            'full body stretching',
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w400,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                           SizedBox(width: width * 0.05),
-                          Container(
-                            height: height * 0.16,
-                            width: width * 0.55,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(19),
-                              image: const DecorationImage(
-                                image: AssetImage('assets/images/knee.png'),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                //!Magenta portion
-                                Container(
-                                  height: height * 0.035,
-                                  width: width * 0.55,
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xffD20DCD)
-                                        .withOpacity(0.4),
-                                    borderRadius: const BorderRadius.only(
-                                      bottomLeft: Radius.circular(19),
-                                      bottomRight: Radius.circular(19),
-                                    ),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(left: 10),
-                                    child: Row(
-                                      children: [
-                                        SizedBox(width: width * 0.03),
-                                        const Text(
-                                          'knee pain relief',
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                PageTransition(
+                                  type: PageTransitionType.rightToLeftWithFade,
+                                  child: const Sleep(),
                                 ),
-                              ],
+                              );
+                            },
+                            child: Container(
+                              height: height * 0.16,
+                              width: width * 0.55,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(19),
+                                image: const DecorationImage(
+                                  image: AssetImage('assets/images/knee.png'),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  //!Magenta portion
+                                  Container(
+                                    height: height * 0.035,
+                                    width: width * 0.55,
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xffD20DCD)
+                                          .withOpacity(0.4),
+                                      borderRadius: const BorderRadius.only(
+                                        bottomLeft: Radius.circular(19),
+                                        bottomRight: Radius.circular(19),
+                                      ),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 10),
+                                      child: Row(
+                                        children: [
+                                          SizedBox(width: width * 0.03),
+                                          const Text(
+                                            'knee pain relief',
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w400,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           )
                         ],
@@ -724,53 +861,75 @@ class _TrainingToolsState extends State<TrainingTools> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Container(
-                    height: 173,
-                    width: 173,
-                    decoration: BoxDecoration(
-                      color: const Color(0xff262627),
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SvgPicture.asset('assets/icons/abs.svg'),
-                          SizedBox(height: height * 0.02),
-                          const Text(
-                            'ABS',
-                            style: TextStyle(
-                              fontSize: 23,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.rightToLeftWithFade,
+                          child: const BodyFocusSubMenu(title: 'CHEST'),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      height: 173,
+                      width: 173,
+                      decoration: BoxDecoration(
+                        color: const Color(0xff262627),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SvgPicture.asset('assets/icons/abs.svg'),
+                            SizedBox(height: height * 0.02),
+                            const Text(
+                              'CHEST',
+                              style: TextStyle(
+                                fontSize: 23,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                  Container(
-                    height: 173,
-                    width: 173,
-                    decoration: BoxDecoration(
-                      color: const Color(0xff262627),
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SvgPicture.asset('assets/icons/arm.svg'),
-                          SizedBox(height: height * 0.02),
-                          const Text(
-                            'SHOULDER',
-                            style: TextStyle(
-                              fontSize: 23,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.rightToLeftWithFade,
+                          child: const BodyFocusSubMenu(title: 'SHOULDERS'),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      height: 173,
+                      width: 173,
+                      decoration: BoxDecoration(
+                        color: const Color(0xff262627),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SvgPicture.asset('assets/icons/arm.svg'),
+                            SizedBox(height: height * 0.02),
+                            const Text(
+                              'SHOULDER',
+                              style: TextStyle(
+                                fontSize: 23,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -781,53 +940,77 @@ class _TrainingToolsState extends State<TrainingTools> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Container(
-                    height: 173,
-                    width: 173,
-                    decoration: BoxDecoration(
-                      color: const Color(0xff262627),
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SvgPicture.asset('assets/icons/sixpacs.svg'),
-                          SizedBox(height: height * 0.02),
-                          const Text(
-                            'SIX PACS',
-                            style: TextStyle(
-                              fontSize: 23,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.rightToLeftWithFade,
+                          child: const BodyFocusSubMenu(title: 'ABS'),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      height: 173,
+                      width: 173,
+                      decoration: BoxDecoration(
+                        color: const Color(0xff262627),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SvgPicture.asset('assets/icons/sixpacs.svg'),
+                            SizedBox(height: height * 0.02),
+                            const Text(
+                              'ABS',
+                              style: TextStyle(
+                                fontSize: 23,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                  Container(
-                    height: 173,
-                    width: 173,
-                    decoration: BoxDecoration(
-                      color: const Color(0xff262627),
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SvgPicture.asset('assets/icons/chest.svg'),
-                          SizedBox(height: height * 0.02),
-                          const Text(
-                            'CHEST',
-                            style: TextStyle(
-                              fontSize: 23,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white,
-                            ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.rightToLeftWithFade,
+                          child: const BodyFocusSubMenu(
+                            title: 'ARMS',
                           ),
-                        ],
+                        ),
+                      );
+                    },
+                    child: Container(
+                      height: 173,
+                      width: 173,
+                      decoration: BoxDecoration(
+                        color: const Color(0xff262627),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SvgPicture.asset('assets/icons/chest.svg'),
+                            SizedBox(height: height * 0.02),
+                            const Text(
+                              'ARMS',
+                              style: TextStyle(
+                                fontSize: 23,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

@@ -2,6 +2,7 @@ import 'package:fitness_app/screens/home_screen.dart';
 import 'package:fitness_app/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
+import 'package:page_transition/page_transition.dart';
 
 class edit_profile extends StatelessWidget {
   @override
@@ -24,17 +25,25 @@ class edit_profile extends StatelessWidget {
             color: Colors.white,
           ),
           onPressed: () {
-            Get.back();
+            // Get.back();
+            Navigator.pop(context);
           },
         ),
       ),
       floatingActionButton: InkWell(
         onTap: () {
-          Get.to(
-            () => const HomeScreen(),
-            duration: const Duration(
-                milliseconds: 500), //duration of transitions, default 1 sec
-            transition: Transition.leftToRight,
+          // Get.to(
+          //   () => const HomeScreen(),
+          //   duration: const Duration(
+          //       milliseconds: 500), //duration of transitions, default 1 sec
+          //   transition: Transition.leftToRight,
+          // );
+          Navigator.push(
+            context,
+            PageTransition(
+              type: PageTransitionType.rightToLeftWithFade,
+              child: const HomeScreen(),
+            ),
           );
         },
         child: Container(
@@ -110,6 +119,35 @@ class edit_profile extends StatelessWidget {
                     decoration: const InputDecoration(
                         border: InputBorder.none,
                         hintText: "Enter Email",
+                        hintStyle: TextStyle(
+                          color: Colors.white54,
+                        )),
+                  ),
+                ),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                "Phone Number",
+                style: TextStyle(
+                    color: AppColors.grey, fontWeight: FontWeight.bold),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                height: height / 18,
+                width: width,
+                decoration: BoxDecoration(
+                    color: AppColors.grey,
+                    borderRadius: BorderRadius.circular(8)),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        hintText: "Phone Number",
                         hintStyle: TextStyle(
                           color: Colors.white54,
                         )),

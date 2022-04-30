@@ -1,11 +1,12 @@
 import 'dart:io';
-import 'package:fitness_app/screens/bottom_nav/fees.dart';
+import 'package:fitness_app/screens/bottom_nav/notification.dart';
 import 'package:fitness_app/screens/bottom_nav/profile.dart';
 import 'package:fitness_app/screens/home_screen.dart';
 import 'package:fitness_app/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
+import 'package:page_transition/page_transition.dart';
+// import 'package:get/get.dart';
 
 import 'bottom_nav/neutrition_part.dart';
 
@@ -20,7 +21,7 @@ class _MainHomeState extends State<MainHome> {
   final List<Widget> screens = [
     const HomeScreen(),
     neutrition_part(),
-    fees(),
+    Notifications(),
     profile()
   ];
   final PageStorageBucket bucket = PageStorageBucket();
@@ -32,11 +33,29 @@ class _MainHomeState extends State<MainHome> {
     return WillPopScope(
       onWillPop: () async {
         current_tab == 1
-            ? Get.to(() => const MainHome())
+            ? Navigator.push(
+                context,
+                PageTransition(
+                  type: PageTransitionType.rightToLeftWithFade,
+                  child: const MainHome(),
+                ),
+              )
             : current_tab == 2
-                ? Get.to(() => const MainHome())
+                ? Navigator.push(
+                    context,
+                    PageTransition(
+                      type: PageTransitionType.rightToLeftWithFade,
+                      child: const MainHome(),
+                    ),
+                  )
                 : current_tab == 3
-                    ? Get.to(() => const MainHome())
+                    ? Navigator.push(
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.rightToLeftWithFade,
+                          child: const MainHome(),
+                        ),
+                      )
                     : showDialog(
                         context: context,
                         barrierDismissible: false,
@@ -55,7 +74,8 @@ class _MainHomeState extends State<MainHome> {
                               TextButton(
                                 child: const Text("NO"),
                                 onPressed: () {
-                                  Get.back();
+                                  // Get.back();
+                                  Navigator.pop(context);
                                 },
                               )
                             ],
@@ -134,7 +154,7 @@ class _MainHomeState extends State<MainHome> {
                   minWidth: 20,
                   onPressed: () {
                     setState(() {
-                      currentScreen = fees();
+                      currentScreen = Notifications();
                       current_tab = 2;
                     });
                   },

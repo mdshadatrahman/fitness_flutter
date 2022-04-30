@@ -1,7 +1,8 @@
 import 'package:fitness_app/select_position.dart';
 import 'package:fitness_app/utils/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:page_transition/page_transition.dart';
+// import 'package:get/get.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -186,10 +187,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       SizedBox(height: height * 0.02),
                       GestureDetector(
                         onTap: () {
-                          Get.to(
-                            () => const SelectPositionScreen(),
-                            transition: Transition.zoom,
-                            duration: const Duration(milliseconds: 250),
+                          // Get.to(
+                          //   () => const SelectPositionScreen(),
+                          //   transition: Transition.zoom,
+                          //   duration: const Duration(milliseconds: 250),
+                          // );
+                          Navigator.push(
+                            context,
+                            PageTransition(
+                              type: PageTransitionType.rightToLeftWithFade,
+                              child: const SelectPositionScreen(),
+                            ),
                           );
                         },
                         child: Container(
@@ -220,7 +228,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 left: width * 0.3,
                 child: GestureDetector(
                   onTap: () {
-                    Get.back();
+                    // Get.back();
+                    Navigator.pop(context);
                   },
                   child: const Text(
                     'Already have an account?',

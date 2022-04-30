@@ -90,11 +90,13 @@ class CustomDrawer extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              Get.to(() => video_content(),
-                  duration: const Duration(
-                      milliseconds:
-                          500), //duration of transitions, default 1 sec
-                  transition: Transition.leftToRight);
+              Get.to(
+                () => video_content(),
+                duration: const Duration(
+                  milliseconds: 500,
+                ), //duration of transitions, default 1 sec
+                transition: Transition.leftToRight,
+              );
             },
             horizontalTitleGap: .1,
             leading: const Icon(

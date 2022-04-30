@@ -3,6 +3,7 @@ import 'package:fitness_app/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/route_manager.dart';
+import 'package:page_transition/page_transition.dart';
 
 class session_tab extends StatefulWidget {
   @override
@@ -89,8 +90,17 @@ class _session_tabState extends State<session_tab> {
                                       padding: const EdgeInsets.all(8.0),
                                       child: InkWell(
                                           onTap: () {
-                                            Get.to(() => const ChatScreen(
-                                                chatName: 'Silva Roy'));
+                                            // Get.to(() => const ChatScreen(
+                                            //     chatName: 'Silva Roy'));
+                                            Navigator.push(
+                                              context,
+                                              PageTransition(
+                                                type: PageTransitionType
+                                                    .rightToLeftWithFade,
+                                                child: const ChatScreen(
+                                                    chatName: 'Silva Roy'),
+                                              ),
+                                            );
                                           },
                                           child: SvgPicture.asset(
                                               'assets/icons/chats.svg')),
@@ -104,8 +114,16 @@ class _session_tabState extends State<session_tab> {
                                                   search_result[index]
                                                       ['follow'] = 1;
                                                 })
-                                              : Get.to(() => const ChatScreen(
-                                                  chatName: 'Silva Roy'));
+                                              : Navigator.push(
+                                                  context,
+                                                  PageTransition(
+                                                    type: PageTransitionType
+                                                        .rightToLeftWithFade,
+                                                    child: const ChatScreen(
+                                                      chatName: 'Silva Roy',
+                                                    ),
+                                                  ),
+                                                );
                                         },
                                         child: Container(
                                           height: 30,

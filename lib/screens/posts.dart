@@ -1,7 +1,8 @@
 import 'package:fitness_app/screens/comments.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
+import 'package:page_transition/page_transition.dart';
+// import 'package:get/get.dart';
 
 import '../utils/colors.dart';
 
@@ -32,7 +33,8 @@ class _PostScreenState extends State<PostScreen> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back, color: Colors.white),
             onPressed: () {
-              Get.back();
+              // Get.back();
+              Navigator.pop(context);
             },
           ),
           actions: [
@@ -85,9 +87,16 @@ class _PostScreenState extends State<PostScreen> {
                     //!image
                     GestureDetector(
                       onTap: () {
-                        Get.to(
-                          () => const PostScreen(),
-                          transition: Transition.rightToLeft,
+                        // Get.to(
+                        //   () => const PostScreen(),
+                        //   transition: Transition.rightToLeft,
+                        // );
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.rightToLeftWithFade,
+                            child: const PostScreen(),
+                          ),
                         );
                       },
                       child: Container(
@@ -135,9 +144,16 @@ class _PostScreenState extends State<PostScreen> {
                         //!Comment
                         GestureDetector(
                           onTap: () {
-                            Get.to(
-                              () => const CommentsScreen(),
-                              transition: Transition.rightToLeft,
+                            // Get.to(
+                            //   () => const CommentsScreen(),
+                            //   transition: Transition.rightToLeft,
+                            // );
+                            Navigator.push(
+                              context,
+                              PageTransition(
+                                type: PageTransitionType.rightToLeftWithFade,
+                                child: const CommentsScreen(),
+                              ),
                             );
                           },
                           child: const Icon(

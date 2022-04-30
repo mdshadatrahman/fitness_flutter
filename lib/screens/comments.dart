@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 
 import '../utils/colors.dart';
 
@@ -31,7 +30,8 @@ class _CommentsScreenState extends State<CommentsScreen> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back, color: Colors.white),
             onPressed: () {
-              Get.back();
+              // Get.back();
+              Navigator.pop(context);
             },
           ),
           actions: [

@@ -1,6 +1,6 @@
 import 'package:fitness_app/utils/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 
 class BMICalc extends StatefulWidget {
   const BMICalc({Key? key}) : super(key: key);
@@ -23,7 +23,8 @@ class _BMICalcState extends State<BMICalc> {
           backgroundColor: Colors.black,
           leading: GestureDetector(
             onTap: () {
-              Get.back();
+              // Get.back();
+              Navigator.pop(context);
             },
             child: const Icon(
               Icons.arrow_back,

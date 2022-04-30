@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
+import '../screens/bottom_nav/notification.dart';
 import '../screens/home_screen.dart';
 import 'colors.dart';
 
@@ -136,7 +137,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                   minWidth: 20,
                   onPressed: () {
                     setState(() {
-                      currentScreen = const FeesScreen();
+                      currentScreen = const Notifications();
                       current_tab = 2;
                     });
                   },
@@ -145,15 +146,15 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                     children: [
                       current_tab == 2
                           ? const Icon(
-                              Icons.payments,
+                              Icons.notifications,
                               color: AppColors.material,
                             )
                           : const Icon(
-                              Icons.payments_outlined,
+                              Icons.notifications_outlined,
                               color: AppColors.textcolor,
                             ),
                       Text(
-                        "Fees",
+                        "Notifications",
                         style: TextStyle(
                           fontSize: 12,
                           color: current_tab == 2

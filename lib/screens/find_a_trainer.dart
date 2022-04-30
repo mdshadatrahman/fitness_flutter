@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 
 class FindATrainer extends StatefulWidget {
   const FindATrainer({Key? key}) : super(key: key);
@@ -23,7 +23,8 @@ class _FindATrainerState extends State<FindATrainer> {
           backgroundColor: Colors.black,
           leading: GestureDetector(
             onTap: () {
-              Get.back();
+              // Get.back();
+              Navigator.pop(context);
             },
             child: const Icon(
               Icons.arrow_back,

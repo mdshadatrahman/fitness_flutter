@@ -1,7 +1,8 @@
 import 'package:fitness_app/screens/forgot_pass/verify_otp.dart';
 import 'package:fitness_app/utils/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:page_transition/page_transition.dart';
+// import 'package:get/get.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({Key? key}) : super(key: key);
@@ -122,10 +123,17 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       SizedBox(height: height * 0.15),
                       GestureDetector(
                         onTap: () {
-                          Get.to(
-                            () => const OTPVerify(),
-                            transition: Transition.zoom,
-                            duration: const Duration(milliseconds: 250),
+                          // Get.to(
+                          //   () => const OTPVerify(),
+                          //   transition: Transition.zoom,
+                          //   duration: const Duration(milliseconds: 250),
+                          // );
+                          Navigator.push(
+                            context,
+                            PageTransition(
+                              type: PageTransitionType.rightToLeftWithFade,
+                              child: const OTPVerify(),
+                            ),
                           );
                         },
                         child: Container(
