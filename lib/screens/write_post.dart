@@ -73,19 +73,22 @@ class _write_psotState extends State<write_psot> {
         padding: const EdgeInsets.all(8.0),
         child: InkWell(
           onTap: () {
-            // Get.back();
             Navigator.pop(context);
           },
           child: Container(
-            height: height / 18,
-            width: width,
+            height: height / 17,
+            width: width * 0.9,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10), color: AppColors.t2),
+              borderRadius: BorderRadius.circular(10),
+              color: AppColors.t2,
+            ),
             child: const Center(
               child: Text(
                 "Publish",
-                style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),
@@ -95,42 +98,204 @@ class _write_psotState extends State<write_psot> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Stack(
-              clipBehavior: Clip.none,
-              children: [
-                _image != null
-                    ? Container(
-                        height: height / 8,
-                        width: width,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: FileImage(_image), fit: BoxFit.cover)),
-                      )
-                    : Container(),
-              ],
-            ),
+            // Stack(
+            //   clipBehavior: Clip.none,
+            //   children: [
+            //     _image != null
+            //         ? Container(
+            //             height: height / 8,
+            //             width: width,
+            //             decoration: BoxDecoration(
+            //               image: DecorationImage(
+            //                   image: FileImage(_image), fit: BoxFit.cover),
+            //             ),
+            //           )
+            //         : Container(),
+            //   ],
+            // ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: InkWell(
-                onTap: () {
-                  showModalBottomSheet(
-                      context: (context),
-                      builder: (builder) => bottomSheetProfileEdit());
-                },
-                child: Container(
-                    width: width,
-                    decoration: BoxDecoration(
-                        color: AppColors.t2,
-                        borderRadius: BorderRadius.circular(8)),
-                    child: const Center(
-                        child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        'Pick Image',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.white),
-                      ),
-                    ))),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  InkWell(
+                    onTap: () {
+                      showModalBottomSheet(
+                        context: (context),
+                        builder: (builder) => bottomSheetProfileEdit(),
+                      );
+                    },
+                    child: _image != null
+                        ? Stack(
+                            clipBehavior: Clip.none,
+                            children: [
+                              Container(
+                                height: width * 0.27,
+                                width: width * 0.27,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  image: DecorationImage(
+                                    image: FileImage(_image),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                left: width * 0.235,
+                                top: -width * 0.02,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      _image = null;
+                                    });
+                                  },
+                                  child: const Icon(
+                                    Icons.remove_circle,
+                                    color: AppColors.magenta,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )
+                        : Container(
+                            height: width * 0.27,
+                            width: width * 0.27,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(
+                                color: AppColors.magenta,
+                              ),
+                            ),
+                            child: const Center(
+                              child: Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Icon(
+                                  Icons.image,
+                                  color: AppColors.magenta,
+                                ),
+                              ),
+                            ),
+                          ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      showModalBottomSheet(
+                        context: (context),
+                        builder: (builder) => bottomSheetProfileEdit(),
+                      );
+                    },
+                    child: _image != null
+                        ? Stack(
+                            clipBehavior: Clip.none,
+                            children: [
+                              Container(
+                                height: width * 0.27,
+                                width: width * 0.27,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  image: DecorationImage(
+                                    image: FileImage(_image),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                left: width * 0.235,
+                                top: -width * 0.02,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      _image = null;
+                                    });
+                                  },
+                                  child: const Icon(
+                                    Icons.remove_circle,
+                                    color: AppColors.magenta,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )
+                        : Container(
+                            height: width * 0.27,
+                            width: width * 0.27,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(
+                                color: AppColors.magenta,
+                              ),
+                            ),
+                            child: const Center(
+                              child: Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Icon(
+                                  Icons.video_collection_outlined,
+                                  color: AppColors.magenta,
+                                ),
+                              ),
+                            ),
+                          ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      showModalBottomSheet(
+                        context: (context),
+                        builder: (builder) => bottomSheetProfileEdit(),
+                      );
+                    },
+                    child: _image != null
+                        ? Stack(
+                            clipBehavior: Clip.none,
+                            children: [
+                              Container(
+                                height: width * 0.27,
+                                width: width * 0.27,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  image: DecorationImage(
+                                    image: FileImage(_image),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                left: width * 0.235,
+                                top: -width * 0.02,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      _image = null;
+                                    });
+                                  },
+                                  child: const Icon(
+                                    Icons.remove_circle,
+                                    color: AppColors.magenta,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )
+                        : Container(
+                            height: width * 0.27,
+                            width: width * 0.27,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(
+                                color: AppColors.magenta,
+                              ),
+                            ),
+                            child: const Center(
+                              child: Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Icon(
+                                  Icons.add_box,
+                                  color: AppColors.magenta,
+                                ),
+                              ),
+                            ),
+                          ),
+                  ),
+                ],
               ),
             ),
             const Padding(
@@ -138,7 +303,9 @@ class _write_psotState extends State<write_psot> {
               child: Text(
                 "Description",
                 style: TextStyle(
-                    color: Colors.white54, fontWeight: FontWeight.w700),
+                  color: Colors.white54,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
             ),
             Padding(
@@ -151,13 +318,16 @@ class _write_psotState extends State<write_psot> {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    maxLines: 4,
+                    maxLines: 8,
                     style: const TextStyle(color: Colors.white),
                     decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Add a description",
-                        hintStyle: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold)),
+                      border: InputBorder.none,
+                      hintText: "Add a description",
+                      hintStyle: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -214,3 +384,11 @@ class _write_psotState extends State<write_psot> {
     );
   }
 }
+
+
+
+
+// showModalBottomSheet(
+//                     context: (context),
+//                     builder: (builder) => bottomSheetProfileEdit(),
+//                   );

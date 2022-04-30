@@ -1,5 +1,6 @@
 import 'package:fitness_app/screens/message_screen.dart';
 import 'package:fitness_app/screens/posts.dart';
+import 'package:fitness_app/screens/recommanded.dart';
 import 'package:fitness_app/screens/search.dart';
 import 'package:fitness_app/screens/write_post.dart';
 import 'package:fitness_app/utils/Custom_drawer.dart';
@@ -9,6 +10,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 // import 'package:get/get.dart';
 import 'package:page_transition/page_transition.dart';
 
+import 'bottom_nav/notification.dart';
 import 'chat_screen.dart';
 import 'comments.dart';
 
@@ -63,10 +65,32 @@ class _HomeScreenState extends State<HomeScreen>
                   ),
                 );
               },
-              child: SvgPicture.asset('assets/icons/chats.svg'),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    PageTransition(
+                      type: PageTransitionType.rightToLeftWithFade,
+                      child: const MessageScreen(),
+                    ),
+                  );
+                },
+                child: SvgPicture.asset('assets/icons/chats.svg'),
+              ),
             ),
             SizedBox(width: width * 0.02),
-            SvgPicture.asset('assets/icons/nofi.svg'),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  PageTransition(
+                    type: PageTransitionType.rightToLeftWithFade,
+                    child: const Notifications(),
+                  ),
+                );
+              },
+              child: SvgPicture.asset('assets/icons/nofi.svg'),
+            ),
             SizedBox(width: width * 0.03),
           ],
         ),
@@ -392,225 +416,251 @@ class _HomeScreenState extends State<HomeScreen>
                   ),
                 ),
                 SizedBox(height: height * 0.03),
-                Stack(
-                  children: [
-                    Column(
-                      children: [
-                        Container(
-                          height: height * 0.07,
-                          width: width,
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10),
-                              topRight: Radius.circular(10),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        type: PageTransitionType.rightToLeftWithFade,
+                        child: Recommanded(),
+                      ),
+                    );
+                  },
+                  child: Stack(
+                    children: [
+                      Column(
+                        children: [
+                          Container(
+                            height: height * 0.07,
+                            width: width,
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(10),
+                                topRight: Radius.circular(10),
+                              ),
+                              color: Color(0xff500C44),
                             ),
-                            color: Color(0xff500C44),
-                          ),
-                          child: const Padding(
-                            padding: EdgeInsets.only(top: 15, left: 8),
-                            child: Text(
-                              'Fitness Stretching',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 20,
-                                color: Colors.white,
+                            child: const Padding(
+                              padding: EdgeInsets.only(top: 15, left: 8),
+                              child: Text(
+                                'Fitness Stretching',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        Container(
-                          height: height * 0.16,
-                          width: width,
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(10),
-                              bottomRight: Radius.circular(10),
+                          Container(
+                            height: height * 0.16,
+                            width: width,
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(10),
+                                bottomRight: Radius.circular(10),
+                              ),
+                              color: Color(0xff051532),
                             ),
-                            color: Color(0xff051532),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                                top: height * 0.03, left: width * 0.05),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    const Text(
-                                      'Jan 19, 08:30 AM',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 14,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    SizedBox(height: height * 0.02),
-                                    Container(
-                                      height: height * 0.045,
-                                      width: width * 0.25,
-                                      decoration: BoxDecoration(
-                                        color: const Color(0xff500C44),
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: Center(
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: const [
-                                            Icon(
-                                              Icons.timer_outlined,
-                                              color: Colors.white,
-                                            ),
-                                            Text(
-                                              '15 mint',
-                                              style: TextStyle(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w400,
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                          ],
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                  top: height * 0.03, left: width * 0.05),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      const Text(
+                                        'Jan 19, 08:30 AM',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 14,
+                                          color: Colors.white,
                                         ),
                                       ),
-                                    )
-                                  ],
-                                ),
-                              ],
+                                      SizedBox(height: height * 0.02),
+                                      Container(
+                                        height: height * 0.045,
+                                        width: width * 0.25,
+                                        decoration: BoxDecoration(
+                                          color: const Color(0xff500C44),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        child: Center(
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: const [
+                                              Icon(
+                                                Icons.timer_outlined,
+                                                color: Colors.white,
+                                              ),
+                                              Text(
+                                                '15 mint',
+                                                style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w400,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        )
-                      ],
-                    ),
-                    Positioned(
-                      left: width * 0.6,
-                      top: height * 0.02,
-                      child: Container(
-                        height: height * 0.15,
-                        width: width * 0.25,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          image: const DecorationImage(
-                            image: AssetImage(
-                              'assets/images/stretch.png',
+                          )
+                        ],
+                      ),
+                      Positioned(
+                        left: width * 0.6,
+                        top: height * 0.02,
+                        child: Container(
+                          height: height * 0.15,
+                          width: width * 0.25,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            image: const DecorationImage(
+                              image: AssetImage(
+                                'assets/images/stretch.png',
+                              ),
+                              fit: BoxFit.cover,
                             ),
-                            fit: BoxFit.cover,
                           ),
                         ),
-                      ),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
 
                 SizedBox(height: height * 0.03),
-                Stack(
-                  children: [
-                    Column(
-                      children: [
-                        Container(
-                          height: height * 0.07,
-                          width: width,
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10),
-                              topRight: Radius.circular(10),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        type: PageTransitionType.rightToLeftWithFade,
+                        child: Recommanded(),
+                      ),
+                    );
+                  },
+                  child: Stack(
+                    children: [
+                      Column(
+                        children: [
+                          Container(
+                            height: height * 0.07,
+                            width: width,
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(10),
+                                topRight: Radius.circular(10),
+                              ),
+                              color: Color(0xff032B38),
                             ),
-                            color: Color(0xff032B38),
-                          ),
-                          child: const Padding(
-                            padding: EdgeInsets.only(top: 15, left: 8),
-                            child: Text(
-                              'Weight Training',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 20,
-                                color: Colors.white,
+                            child: const Padding(
+                              padding: EdgeInsets.only(top: 15, left: 8),
+                              child: Text(
+                                'Weight Training',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        Container(
-                          height: height * 0.16,
-                          width: width,
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(10),
-                              bottomRight: Radius.circular(10),
+                          Container(
+                            height: height * 0.16,
+                            width: width,
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(10),
+                                bottomRight: Radius.circular(10),
+                              ),
+                              color: Color(0xff051532),
                             ),
-                            color: Color(0xff051532),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                                top: height * 0.03, left: width * 0.05),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    const Text(
-                                      'Jan 26, 03:30 PM',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 14,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    SizedBox(height: height * 0.02),
-                                    Container(
-                                      height: height * 0.045,
-                                      width: width * 0.25,
-                                      decoration: BoxDecoration(
-                                        color: const Color(0xff032B38),
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: Center(
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: const [
-                                            Icon(
-                                              Icons.timer_outlined,
-                                              color: Colors.white,
-                                            ),
-                                            Text(
-                                              '15 mint',
-                                              style: TextStyle(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w400,
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                          ],
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                  top: height * 0.03, left: width * 0.05),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      const Text(
+                                        'Jan 26, 03:30 PM',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 14,
+                                          color: Colors.white,
                                         ),
                                       ),
-                                    )
-                                  ],
-                                ),
-                              ],
+                                      SizedBox(height: height * 0.02),
+                                      Container(
+                                        height: height * 0.045,
+                                        width: width * 0.25,
+                                        decoration: BoxDecoration(
+                                          color: const Color(0xff032B38),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        child: Center(
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: const [
+                                              Icon(
+                                                Icons.timer_outlined,
+                                                color: Colors.white,
+                                              ),
+                                              Text(
+                                                '15 mint',
+                                                style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w400,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        )
-                      ],
-                    ),
-                    Positioned(
-                      left: width * 0.6,
-                      top: height * 0.02,
-                      child: Container(
-                        height: height * 0.15,
-                        width: width * 0.25,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          image: const DecorationImage(
-                            image: AssetImage(
-                              'assets/images/barbell.png',
+                          )
+                        ],
+                      ),
+                      Positioned(
+                        left: width * 0.6,
+                        top: height * 0.02,
+                        child: Container(
+                          height: height * 0.15,
+                          width: width * 0.25,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            image: const DecorationImage(
+                              image: AssetImage(
+                                'assets/images/barbell.png',
+                              ),
+                              fit: BoxFit.cover,
                             ),
-                            fit: BoxFit.cover,
                           ),
                         ),
-                      ),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
 
                 //!PostPart

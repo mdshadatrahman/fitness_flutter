@@ -3,6 +3,9 @@ import 'package:fitness_app/utils/Custom_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:page_transition/page_transition.dart';
+
+import 'bottom_nav/notification.dart';
 
 class MessageScreen extends StatefulWidget {
   const MessageScreen({Key? key}) : super(key: key);
@@ -44,7 +47,18 @@ class _MessageScreenState extends State<MessageScreen>
             ),
           ),
           actions: [
-            SvgPicture.asset('assets/icons/nofi.svg'),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  PageTransition(
+                    type: PageTransitionType.rightToLeftWithFade,
+                    child: const Notifications(),
+                  ),
+                );
+              },
+              child: SvgPicture.asset('assets/icons/nofi.svg'),
+            ),
             SizedBox(width: width * 0.03),
           ],
         ),

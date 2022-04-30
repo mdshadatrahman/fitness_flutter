@@ -1,3 +1,4 @@
+import 'package:fitness_app/screens/LiveStreaming.dart';
 import 'package:fitness_app/screens/coach_list.dart';
 import 'package:fitness_app/screens/posts.dart';
 import 'package:fitness_app/utils/colors.dart';
@@ -6,6 +7,7 @@ import 'package:page_transition/page_transition.dart';
 
 import 'comments.dart';
 import 'edit_profile.dart';
+import 'follower_followings.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -180,29 +182,43 @@ class _ProfileScreenState extends State<ProfileScreen>
                                   color: Colors.white,
                                 ),
                               ),
-                              child: Center(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    const Text(
-                                      'Following',
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.white,
-                                      ),
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    PageTransition(
+                                      type: PageTransitionType
+                                          .rightToLeftWithFade,
+                                      child: const FollowerFollowingsScreen(
+                                          title: 'Following'),
                                     ),
-                                    SizedBox(width: width * 0.02),
-                                    const Text(
-                                      '(100)',
-                                      style: TextStyle(
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white,
+                                  );
+                                },
+                                child: Center(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      const Text(
+                                        'Following',
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.white,
+                                        ),
                                       ),
-                                    )
-                                  ],
+                                      SizedBox(width: width * 0.02),
+                                      const Text(
+                                        '(100)',
+                                        style: TextStyle(
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.white,
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -216,29 +232,43 @@ class _ProfileScreenState extends State<ProfileScreen>
                                   color: Colors.white,
                                 ),
                               ),
-                              child: Center(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    const Text(
-                                      'Followers',
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.white,
-                                      ),
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    PageTransition(
+                                      type: PageTransitionType
+                                          .rightToLeftWithFade,
+                                      child: const FollowerFollowingsScreen(
+                                          title: 'Follower'),
                                     ),
-                                    SizedBox(width: width * 0.02),
-                                    const Text(
-                                      '(1k+)',
-                                      style: TextStyle(
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white,
+                                  );
+                                },
+                                child: Center(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      const Text(
+                                        'Followers',
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.white,
+                                        ),
                                       ),
-                                    )
-                                  ],
+                                      SizedBox(width: width * 0.02),
+                                      const Text(
+                                        '(1k+)',
+                                        style: TextStyle(
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.white,
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             )
@@ -646,6 +676,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                                   workoutName: 'ABS Workout',
                                   date: '01/01/22',
                                   time: '10:00 AM - 11:00 AM 1h',
+                                  isOnline: true,
                                 ),
                                 SizedBox(height: height * 0.02),
                                 TrainerTile(
@@ -693,6 +724,7 @@ class TrainerTile extends StatelessWidget {
     this.isDone = false,
     required this.date,
     required this.time,
+    this.isOnline = false,
   }) : super(key: key);
 
   final double height;
@@ -701,93 +733,120 @@ class TrainerTile extends StatelessWidget {
   final bool isDone;
   final String date;
   final String time;
+  final bool isOnline;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: height * 0.1,
-      width: width,
-      decoration: BoxDecoration(
-        color: const Color(0xff4D4D4D),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: width / 20),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                const CircleAvatar(
-                  backgroundImage: AssetImage(
-                    'assets/images/p22.jpg',
-                  ),
-                ),
-                SizedBox(width: width * 0.03),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Hilary Ouse',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                      ),
+    return Stack(
+      children: [
+        GestureDetector(
+          onTap: () {
+            isOnline
+                ? Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => live_training(),
                     ),
-                    Text(
-                      workoutName,
-                      style: const TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
-                )
-              ],
+                  )
+                : null;
+          },
+          child: Container(
+            height: height * 0.1,
+            width: width,
+            decoration: BoxDecoration(
+              color: const Color(0xff4D4D4D),
+              borderRadius: BorderRadius.circular(10),
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  date,
-                  style: isDone
-                      ? const TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white,
-                        )
-                      : const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: width / 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      const CircleAvatar(
+                        backgroundImage: AssetImage(
+                          'assets/images/p22.jpg',
                         ),
-                ),
-                isDone
-                    ? const Text(
-                        'Done',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white,
-                        ),
+                      ),
+                      SizedBox(width: width * 0.03),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Hilary Ouse',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Text(
+                            workoutName,
+                            style: const TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
                       )
-                    : Text(
-                        time,
-                        style: const TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white,
-                        ),
-                      )
-              ],
-            )
-          ],
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        date,
+                        style: isDone
+                            ? const TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white,
+                              )
+                            : const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white,
+                              ),
+                      ),
+                      isDone
+                          ? const Text(
+                              'Done',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white,
+                              ),
+                            )
+                          : Text(
+                              time,
+                              style: const TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white,
+                              ),
+                            )
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ),
         ),
-      ),
+        isOnline
+            ? Positioned(
+                top: height * 0.065,
+                left: width * 0.13,
+                child: const CircleAvatar(
+                  backgroundColor: Color(0xff42FF00),
+                  radius: 4,
+                ),
+              )
+            : Container(),
+      ],
     );
   }
 }

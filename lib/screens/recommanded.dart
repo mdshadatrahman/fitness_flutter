@@ -3,12 +3,12 @@ import 'package:fitness_app/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 
-class live_training extends StatefulWidget {
+class Recommanded extends StatefulWidget {
   @override
-  _live_trainingState createState() => _live_trainingState();
+  _RecommandedState createState() => _RecommandedState();
 }
 
-class _live_trainingState extends State<live_training> {
+class _RecommandedState extends State<Recommanded> {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -30,7 +30,7 @@ class _live_trainingState extends State<live_training> {
           ),
         ),
         title: const Text(
-          'Live Training',
+          'Recommanded',
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
