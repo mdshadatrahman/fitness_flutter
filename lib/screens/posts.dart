@@ -210,6 +210,7 @@ class _PostScreenState extends State<PostScreen> {
                         SizedBox(height: height * 0.02),
                       ],
                     ),
+                    //!Comment box
                     Container(
                       height: height * 0.06,
                       width: width,
@@ -247,6 +248,27 @@ class _PostScreenState extends State<PostScreen> {
                           ),
                         ),
                       ),
+                    ),
+                    SizedBox(height: height * 0.04),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: const [
+                        Text(
+                          'Comment',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 25,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: height * 0.02),
+                    Column(
+                      children: [
+                        CommentTiles(height: height, width: width),
+                        CommentTiles(height: height, width: width),
+                      ],
                     )
                   ],
                 ),
@@ -255,6 +277,93 @@ class _PostScreenState extends State<PostScreen> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class CommentTiles extends StatelessWidget {
+  const CommentTiles({
+    Key? key,
+    required this.height,
+    required this.width,
+  }) : super(key: key);
+
+  final double height;
+  final double width;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(height: height * 0.02),
+        Container(
+          padding: const EdgeInsets.only(left: 8, top: 8),
+          height: height * 0.15,
+          width: width,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: const Color(0xff4D4D4D),
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const CircleAvatar(
+                backgroundImage: AssetImage('assets/images/p22.jpg'),
+                radius: 25,
+              ),
+              SizedBox(width: width * 0.02),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Shahriar Islam',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                    ),
+                  ),
+                  SizedBox(height: height * 0.01),
+                  const Text(
+                    'Lorem ipsum dolor sit\nametconsectetur adipiscing elit.\nTortor, ali quet ipsum, viverra\nlaoreet maecenas. Faucibus',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w300,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
+        ),
+        SizedBox(height: height * 0.02),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            height: height / 20,
+            decoration: BoxDecoration(
+              border: Border.all(color: AppColors.grey),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: TextFormField(
+              style: const TextStyle(color: Colors.white),
+              decoration: const InputDecoration(
+                prefixIcon: Icon(
+                  Icons.message,
+                  color: AppColors.grey,
+                ),
+                hintText: 'Reply',
+                hintStyle: TextStyle(color: AppColors.grey),
+                suffixIcon: Icon(
+                  Icons.send,
+                  color: AppColors.magenta,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

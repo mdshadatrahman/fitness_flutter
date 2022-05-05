@@ -3,6 +3,7 @@ import 'package:fitness_app/screens/LiveStreaming.dart';
 import 'package:fitness_app/screens/VideoContent/video_content.dart';
 import 'package:fitness_app/screens/bmi_calc.dart';
 import 'package:fitness_app/screens/diet_tool.dart';
+import 'package:fitness_app/screens/live_now.dart';
 
 import 'package:fitness_app/screens/macro_calculator.dart';
 import 'package:fitness_app/screens/message_screen.dart';
@@ -251,7 +252,10 @@ class CustomDrawer extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              Get.to(live_training());
+              Get.to(
+                () => const LiveNow(),
+                transition: Transition.rightToLeft,
+              );
             },
             horizontalTitleGap: .1,
             leading: const Icon(

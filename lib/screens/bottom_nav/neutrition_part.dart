@@ -1,5 +1,7 @@
+import 'package:fitness_app/screens/nutration_chart2.dart';
 import 'package:fitness_app/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 // import 'package:get/get.dart';
 
 class neutrition_part extends StatefulWidget {
@@ -364,6 +366,42 @@ class _neutrition_partState extends State<neutrition_part> {
                   underline: DropdownButtonHideUnderline(child: Container()),
                 ),
               ),
+            ),
+            SizedBox(
+              height: height / 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Get.to(
+                      () => const NutrationChart2(),
+                      transition: Transition.rightToLeft,
+                    );
+                  },
+                  child: Container(
+                    height: height * 0.05,
+                    width: width * 0.25,
+                    decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: AppColors.magenta,
+                        )),
+                    child: const Center(
+                      child: Text(
+                        'Next',
+                        style: TextStyle(
+                          color: AppColors.magenta,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

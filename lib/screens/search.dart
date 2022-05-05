@@ -1,3 +1,4 @@
+import 'package:fitness_app/screens/profile_viewas.dart';
 import 'package:fitness_app/screens/seach_section/search_details.dart';
 import 'package:fitness_app/utils/colors.dart';
 import 'package:flutter/material.dart';
@@ -143,7 +144,9 @@ class _searchState extends State<search> {
                             context,
                             PageTransition(
                               type: PageTransitionType.rightToLeftWithFade,
-                              child: details_search(),
+                              child: search_result[index]['follow'] == 1
+                                  ? details_search()
+                                  : const ViewAsProfileScreen(),
                             ),
                           );
                         },
@@ -183,9 +186,10 @@ class _searchState extends State<search> {
                                           const Text(
                                             'About Trainer',
                                             style: TextStyle(
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 12),
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 12,
+                                            ),
                                           ),
                                         ],
                                       ),

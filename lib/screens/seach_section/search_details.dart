@@ -3,9 +3,9 @@ import 'package:fitness_app/screens/seach_section/trainer_tabBar/easy.dart';
 import 'package:fitness_app/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/route_manager.dart';
 import 'package:page_transition/page_transition.dart';
 
+import '../aboutme_trainer.dart';
 import '../chat_screen.dart';
 
 class details_search extends StatefulWidget {
@@ -19,7 +19,7 @@ class _details_searchState extends State<details_search>
   @override
   void initState() {
     super.initState();
-    _controller = new TabController(length: 3, vsync: this);
+    _controller = TabController(length: 3, vsync: this);
   }
 
   @override
@@ -132,7 +132,7 @@ class _details_searchState extends State<details_search>
                     width: width / 2.8,
                     decoration: BoxDecoration(
                         border: Border.all(color: Colors.white),
-                        borderRadius: BorderRadius.circular(8)),
+                        borderRadius: BorderRadius.circular(8),),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
@@ -251,19 +251,31 @@ class _details_searchState extends State<details_search>
                   const SizedBox(
                     width: 15,
                   ),
-                  Container(
-                    height: height / 18,
-                    width: width / 3,
-                    decoration: BoxDecoration(
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.rightToLeftWithFade,
+                          child: const AboutTrainer(),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      height: height / 18,
+                      width: width / 3,
+                      decoration: BoxDecoration(
                         border: Border.all(color: AppColors.t2),
-                        borderRadius: BorderRadius.circular(8)),
-                    child: const Center(
-                      child: Text(
-                        "About me",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          "About me",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
+                          ),
                         ),
                       ),
                     ),
