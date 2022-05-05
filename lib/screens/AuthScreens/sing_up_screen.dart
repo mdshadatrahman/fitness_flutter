@@ -168,7 +168,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   agreed = newVal!;
                                 });
                               },
-                              activeColor: const Color(0xffC50048),
+                              activeColor: const Color(0xffD20DCD),
                             ),
                             SizedBox(width: width * 0.01),
                             const Text(
@@ -224,7 +224,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ),
               Positioned(
-                top: height * 0.9,
+                top: height * 0.85,
                 left: width * 0.3,
                 child: GestureDetector(
                   onTap: () {

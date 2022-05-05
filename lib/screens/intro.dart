@@ -37,42 +37,85 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
       pages: [
         PageViewModel(
           title: '',
-          bodyWidget: Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/intro1.png'),
-                fit: BoxFit.cover,
+          bodyWidget: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(height: height * 0.1),
+              Container(
+                height: MediaQuery.of(context).size.width * 0.5,
+                width: MediaQuery.of(context).size.width * 0.5,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/intro.png'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
-            ),
+              SizedBox(height: height * 0.1),
+              const Text(
+                'VIDEO CONTENT',
+                style: TextStyle(
+                  fontSize: 34,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.white,
+                ),
+              ),
+            ],
           ),
         ),
         PageViewModel(
           title: '',
-          bodyWidget: Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/intro2.png'),
-                fit: BoxFit.cover,
+          bodyWidget: Column(
+            children: [
+              SizedBox(height: height * 0.1),
+              Container(
+                height: MediaQuery.of(context).size.width * 0.5,
+                width: MediaQuery.of(context).size.width * 0.5,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/intro.png'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
-            ),
+              SizedBox(height: height * 0.1),
+              const Text(
+                'LIVE TRAINING',
+                style: TextStyle(
+                  fontSize: 34,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.white,
+                ),
+              ),
+            ],
           ),
           // decoration: pageDecoration,  //!Removed this
         ),
         PageViewModel(
           title: '',
-          bodyWidget: Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/intro3.png'),
-                fit: BoxFit.cover,
+          bodyWidget: Column(
+            children: [
+              SizedBox(height: height * 0.1),
+              Container(
+                height: MediaQuery.of(context).size.width * 0.5,
+                width: MediaQuery.of(context).size.width * 0.5,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/intro.png'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
-            ),
+              SizedBox(height: height * 0.1),
+              const Text(
+                'KEEP YOUR BODY\nFIT AND STRONG',
+                style: TextStyle(
+                  fontSize: 34,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.white,
+                ),
+              ),
+            ],
           ),
           // decoration: pageDecoration,  //!Removed this
         ),
@@ -80,8 +123,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
       onDone: () => _onIntroEnd(context),
       showSkipButton: false,
       showBackButton: false,
-      back: Container(),
-      skip: Container(),
+      back: null,
+      skip: null,
       next: Container(),
       done: Container(),
       curve: Curves.fastLinearToSlowEaseIn,
@@ -132,8 +175,14 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Home')),
-      body: const Center(child: Text("This is the screen after Introduction")),
+      appBar: AppBar(
+        title: const Text('Home'),
+      ),
+      body: const Center(
+        child: Text(
+          "This is the screen after Introduction",
+        ),
+      ),
     );
   }
 }

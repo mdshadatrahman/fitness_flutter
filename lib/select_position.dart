@@ -70,8 +70,8 @@ class _SelectPositionScreenState extends State<SelectPositionScreen> {
                               });
                             },
                             child: isTrainee
-                                ? Image.asset('assets/images/trainee1.png')
-                                : Image.asset('assets/images/trainee2.png'),
+                                ? Image.asset('assets/images/trainee2.png')
+                                : Image.asset('assets/images/trainee1.png'),
                           )
                         ],
                       ),

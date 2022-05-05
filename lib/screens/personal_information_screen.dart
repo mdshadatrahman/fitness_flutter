@@ -14,7 +14,8 @@ class PersonalInformationScreen extends StatefulWidget {
 }
 
 class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
-  bool ismale = true; //TODO
+  bool ismale = true;
+  bool hasBeenSelected = false;
   int currwight = 67;
   int currheightfeet = 5;
   int currheightinch = 5;
@@ -43,11 +44,38 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SvgPicture.asset('assets/images/male_active.svg'),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          ismale = true;
+                          hasBeenSelected = true;
+                        });
+                      },
+                      child: ismale
+                          ? SvgPicture.asset(
+                              'assets/images/male_active.svg',
+                            )
+                          : SvgPicture.asset(
+                              'assets/images/male_inactive.svg',
+                            ),
+                    ),
                     SizedBox(width: width * 0.06),
-                    SvgPicture.asset(
-                      'assets/images/female_active.svg',
-                      color: Colors.white,
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          ismale = false;
+                          hasBeenSelected = true;
+                        });
+                      },
+                      child: ismale
+                          ? SvgPicture.asset(
+                              'assets/images/female_inactive.svg',
+                              color: Colors.white,
+                            )
+                          : SvgPicture.asset(
+                              'assets/images/female_active.svg',
+                              color: Colors.white,
+                            ),
                     ),
                   ],
                 ),
@@ -220,7 +248,7 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
                           ),
                         ),
 
-                        //!BUtton
+                        //!Button
 
                         SizedBox(height: height * 0.02),
 
@@ -237,7 +265,9 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
                             width: width * 0.4,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(25),
-                              color: const Color(0xff7E7E7E),
+                              color: hasBeenSelected
+                                  ? Colors.green
+                                  : const Color(0xff7E7E7E),
                             ),
                             child: const Center(
                               child: Text(
