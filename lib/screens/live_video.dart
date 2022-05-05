@@ -218,6 +218,7 @@ class _LiveVideoState extends State<LiveVideo> {
                           Icons.send,
                           color: AppColors.magenta,
                         ),
+                        border: InputBorder.none,
                       ),
                     ),
                   ),
